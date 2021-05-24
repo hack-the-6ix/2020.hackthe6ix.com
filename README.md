@@ -1,4 +1,4 @@
-# Default starter for Gridsome
+# Hack the 6ix - 2020 Landing page
 
 This is the project you get when you run `gridsome create new-project`.
 
