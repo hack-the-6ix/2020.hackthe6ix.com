@@ -87,7 +87,11 @@ function serve() {
             o) o=${OPTARG};;
             # Port to run from
             p) p=${OPTARG};;
-        esac
+        esacbuild-container.yml
+            deploy-container.yml
+            README.md
+            trigger-development-build.yml
+            trigger-production-build.yml
     done
 
     local tag=$TAG\:${v:-latest};

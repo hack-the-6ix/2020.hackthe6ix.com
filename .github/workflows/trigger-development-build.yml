@@ -1,0 +1,22 @@
+name: Build development container
+
+on:
+  pull_request:
+    types: [ opened, reopened, synchronize ]
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # We will now call build container with specific parameters
+      - uses: convictional/trigger-workflow-and-wait@v1.3.0
+        with:
+          github_token: ${{ secrets.GH_ACCESS_TOKEN }}
+          workflow_file_name: build-container.yml
+          inputs: '{ "tag": "${{ secrets.YEAR }}-${{ github.sha }}", "subdomain": "${{ github.sha }}", "dockerrepo": "${{ secrets.DOCKERHUB_PREVIEW_REPOSITORY }}" }'
+          repo: ${{ github.event.repository.name }}
+          owner: hack-the-6ix
+
+
